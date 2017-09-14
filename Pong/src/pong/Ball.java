@@ -3,13 +3,6 @@ package pong;
 import static org.lwjgl.opengl.GL11.*;
 
 import java.util.Random;
-
-import org.lwjgl.opengl.*;
-import org.lwjgl.*;
-
-import entities.*;
-import entities.MoveableEntity;
-import entities.AbstractEntity;
 import entities.AbstractMoveableEntity;
 import pong.Box;
 
@@ -39,11 +32,24 @@ public class Ball extends AbstractMoveableEntity {
 
 	@Override
 	public void update(double delta) {
-		if ((this.intersects(Main.box1) || this.intersects(Main.box2)) && 
-				(this.x >= 10 + Main.box1.width || this.x <= 620))
+		if (this.intersects(Main.box1) && this.x >= Main.box1.x) {
 			this.dx = -this.dx;
-		else if (this.y <= 0 || this.y + this.width + this.height >= 480)
-			this.dy = -dy;
+			
+			this.x = Main.box1.x + Main.box1.width  + 1;
+		} else if (this.intersects(Main.box2) && this.x <= Main.X_RES - 20) {
+			this.dx = -this.dx;
+			
+			this.x = Main.box2.x - Main.box1.width - 1;
+		} else if (this.y <= 0) {
+			this.dy = -this.dy;
+			
+			this.y = 1;
+		} else if (this.y + this.height >= Main.Y_RES) {
+			this.dy = -this.dy;
+			
+			this.y = Main.Y_RES - this.height - 1;
+		}
+			
 		if (Main.randomize && System.currentTimeMillis() - Main.lastColorChange >= 100) {
 			this.redColor = this.rand.nextFloat();
 			this.greenColor = this.rand.nextFloat();

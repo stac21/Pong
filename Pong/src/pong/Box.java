@@ -4,14 +4,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 import java.awt.Rectangle;
 import java.util.Random;
-
-import org.lwjgl.opengl.*;
-import org.lwjgl.*;
-
-import entities.MoveableEntity;
-import entities.AbstractEntity;
 import entities.AbstractMoveableEntity;
-import pong.Ball;
 
 public class Box extends AbstractMoveableEntity {
 	
@@ -63,18 +56,6 @@ public class Box extends AbstractMoveableEntity {
 		this.x = x;
 	}
 	
-	public void setY() {
-		this.y = y;
-	}
-	
-	public void setWidth() {
-		this.width = width;
-	}
-	
-	public void setHeight() {
-		this.height = height;
-	}
-	
 	public double getX() {
 		return x;
 	}
@@ -95,7 +76,5 @@ public class Box extends AbstractMoveableEntity {
 		hitbox.setBounds((int)x, (int)y, (int)width, (int)height);
 		
 		return hitbox.intersects(other.x, other.y, other.width, other.height);
-	}
-
-	
+	}	
 }

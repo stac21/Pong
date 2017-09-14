@@ -1,18 +1,9 @@
 package pong;
 
 import static org.lwjgl.opengl.GL11.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.*;
 import org.lwjgl.*;
-
-import entities.AbstractEntity;
-import entities.AbstractMoveableEntity;
-import entities.MoveableEntity;
-
 /*
  * I'm going to have to make seperate threads for each paddle as well
  * as the ball's movement. Fun.

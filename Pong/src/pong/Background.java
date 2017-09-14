@@ -1,8 +1,6 @@
 package pong;
 
 import java.util.Random;
-import org.lwjgl.opengl.*;
-import org.lwjgl.*;
 import static org.lwjgl.opengl.GL11.*;
 
 public class Background  {
